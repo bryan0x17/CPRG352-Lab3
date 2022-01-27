@@ -34,7 +34,7 @@ public class NoteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String query = request.getQueryString();
+        String query = request.getQueryString() != null ? request.getQueryString() : "";
         
         String path = getServletContext().getRealPath("/WEB-INF/note.txt");
         
