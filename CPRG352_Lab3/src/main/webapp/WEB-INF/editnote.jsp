@@ -15,8 +15,9 @@
             <input type="text" name="title" id="title">
             <label for="contents">Contents: </label>
             <input type="textarea" name="contents" id="contents">
+            <button type="submit">Save</button>
         </form>
-        <button type="submit">Save</button>
+        
         
     </body>
 </html>
