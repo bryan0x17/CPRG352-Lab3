@@ -4,6 +4,10 @@
  */
 package ca.sait.lab3.servlets;
 
+import ca.sait.lab3.models.Note;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -30,6 +34,15 @@ public class NoteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String path = getServletContext().getRealPath("/WEB-INF/note.txt");
+        BufferedReader br = new BufferedReader(new FileReader(new File(path)));
+        
+        String title = br.readLine();
+        String contents = br.readLine();
+        
+        Note note = new Note(title, contents);
+        request.setAttribute("note", note);
+        
         getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp").forward(request, response);
     }
 
