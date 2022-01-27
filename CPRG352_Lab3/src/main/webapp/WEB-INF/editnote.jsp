@@ -12,9 +12,9 @@
         <h2>Edit Note</h2>
         <form action="note" method="POST">
             <label for="title">Title: </label>
-            <input type="text" name="title" id="title">
+            <input type="text" name="title" id="title" value="${note.title}">
             <label for="contents">Contents: </label>
-            <input type="textarea" name="contents" id="contents">
+            <input type="textarea" name="contents" id="contents" value="${note.contents}">
             <button type="submit">Save</button>
         </form>
         

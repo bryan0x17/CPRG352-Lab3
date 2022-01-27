@@ -35,17 +35,17 @@ public class NoteServlet extends HttpServlet {
         String path = getServletContext().getRealPath("/WEB-INF/note.txt");
         
         File noteFile = new File(path);
+        BufferedReader br = new BufferedReader(new FileReader(noteFile));
+        String title = br.readLine();
+        String contents = br.readLine();
+        Note note = new Note(title, contents);
+        request.setAttribute("note", note);
         
         if (query.contains("edit")) {
             // Display the edit form
             getServletContext().getRequestDispatcher("/WEB-INF/editnote.jsp").forward(request, response);
         } else {
             // Display the view page
-            BufferedReader br = new BufferedReader(new FileReader(noteFile));
-            String title = br.readLine();
-            String contents = br.readLine();
-            Note note = new Note(title, contents);
-            request.setAttribute("note", note);
             getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp").forward(request, response);
         }
         
